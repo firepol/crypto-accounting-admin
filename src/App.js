@@ -1,14 +1,17 @@
 import React from 'react';
-import './App.css';
+import {Admin, Resource, ListGuesser} from 'react-admin';
+import jsonServerProvider from 'ra-data-json-server';
+import { AccountList } from './accounts';
+import { TransactionList } from './transactions';
+import { TradeList } from './trades';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Crypto Accounting</h1>
-      </header>
-    </div>
-  );
-}
+const dataProvider = jsonServerProvider('http://127.0.0.1:5000/api');
+const App = () => (
+  <Admin dataProvider={dataProvider}>
+    <Resource name="accounts" list={AccountList}/>
+    <Resource name="trades" list={TradeList}/>
+    <Resource name="transactions" list={TransactionList}/>
+  </Admin>
+);
 
 export default App;
