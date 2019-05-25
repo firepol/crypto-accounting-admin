@@ -3,13 +3,13 @@ import {Admin, Resource} from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 import {AccountCreate, AccountEdit, AccountList} from './accounts';
 import {TransactionList} from './transactions';
-import {TradeList} from './trades';
+import {TradeEdit, TradeList} from './trades';
 
 const dataProvider = jsonServerProvider('http://127.0.0.1:5000/api');
 const App = () => (
   <Admin dataProvider={dataProvider}>
     <Resource name="accounts" list={AccountList} edit={AccountEdit} create={AccountCreate}/>
-    <Resource name="trades" list={TradeList}/>
+    <Resource name="trades" list={TradeList} edit={TradeEdit}/>
     <Resource name="transactions" list={TransactionList}/>
   </Admin>
 );
