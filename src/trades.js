@@ -11,11 +11,30 @@ import {
   Edit,
   LongTextInput,
   DisabledInput,
-  BooleanInput
+  BooleanInput,
+  Filter,
+  TextInput,
+  ReferenceInput,
+  SelectInput
 } from 'react-admin';
 
+const TradeFilter = (props) => (
+  <Filter {...props}>
+    <TextInput label="Search" source="q" alwaysOn />
+    <TextInput label="Base" source="base" />
+    <TextInput label="Quote" source="quote" />
+    <TextInput label="From" source="from_datetime" />
+    <TextInput label="To" source="to_datetime" />
+    <TextInput label="Trade types" source="trade_types" />
+    <TextInput label="Account IDs" source="account_ids" />
+    <ReferenceInput label="Account" source="account_id" reference="accounts" allowEmpty>
+      <SelectInput optionText="name" />
+    </ReferenceInput>
+  </Filter>
+);
+
 export const TradeList = props => (
-  <List {...props}>
+  <List filters={<TradeFilter/>} {...props}>
     <Datagrid rowClick="edit">
       <TextField source="id"/>
       <DateField source="datetime" showTime/>
