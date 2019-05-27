@@ -43,8 +43,8 @@ export const TradeList = props => (
       <TextField source="base"/>
       <TextField source="quote"/>
       <NumberField source="amount"/>
-      <NumberField source="price"/>
-      <NumberField source="cost"/>
+      <NumberField source="price" options={{ maximumFractionDigits: 8 }}/>
+      <NumberField source="cost" options={{ maximumFractionDigits: 8 }}/>
       <NumberField source="detected_trade_type"/>
       <NumberField source="trade_type"/>
       <BooleanField source="sealed"/>
