@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Fragment }  from 'react';
+import AssociateTradesButton from './AssociateTradesButton';
 import {
   List, Datagrid,
   TextField,
@@ -18,6 +19,13 @@ import {
   SelectInput
 } from 'react-admin';
 
+const PostBulkActionButtons = props => (
+  <Fragment>
+    {/* Add the default bulk delete action */}
+    <AssociateTradesButton {...props} />
+  </Fragment>
+);
+
 const TradeFilter = (props) => (
   <Filter {...props}>
     <TextInput label="Search" source="q" alwaysOn />
@@ -34,7 +42,7 @@ const TradeFilter = (props) => (
 );
 
 export const TradeList = props => (
-  <List filters={<TradeFilter/>} {...props} perPage={20}>
+  <List filters={<TradeFilter/>} {...props} bulkActionButtons={<PostBulkActionButtons />} perPage={20}>
     <Datagrid rowClick="edit">
       <TextField source="id"/>
       <DateField source="datetime" showTime/>
