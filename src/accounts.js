@@ -13,7 +13,7 @@ import {
 } from 'react-admin';
 
 export const AccountList = props => (
-  <List {...props}>
+  <List {...props} perPage={50}>
     <Datagrid rowClick="edit">
       <TextField source="id"/>
       <TextField source="type"/>

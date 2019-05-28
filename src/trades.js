@@ -34,7 +34,7 @@ const TradeFilter = (props) => (
 );
 
 export const TradeList = props => (
-  <List filters={<TradeFilter/>} {...props}>
+  <List filters={<TradeFilter/>} {...props} perPage={20}>
     <Datagrid rowClick="edit">
       <TextField source="id"/>
       <DateField source="datetime" showTime/>

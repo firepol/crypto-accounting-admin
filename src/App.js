@@ -7,7 +7,7 @@ import {TradeEdit, TradeList} from './trades';
 
 const dataProvider = jsonServerProvider('http://127.0.0.1:5000/api');
 const App = () => (
-  <Admin dataProvider={dataProvider}>
+  <Admin title="Crypto Accounting" dataProvider={dataProvider}>
     <Resource name="accounts" list={AccountList} edit={AccountEdit} create={AccountCreate}/>
     <Resource name="trades" list={TradeList} edit={TradeEdit}/>
     <Resource name="transactions" list={TransactionList}/>
