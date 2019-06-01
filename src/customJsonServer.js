@@ -36,16 +36,16 @@ export default (function (apiUrl, httpClient) {
     var options = {};
     switch (type) {
       case CREATE:
+        url = apiUrl + "/" + resource;
+        options.method = 'POST';
+        var data = [];
         if (type === 'trades/associate') {
           const { data: { selectedIds } } = params;
-          url = apiUrl + "/" + resource;
-          options.method = 'POST';
-          options.body = JSON.stringify(selectedIds);
+          data = selectedIds;
         } else {
-          url = apiUrl + "/" + resource;
-          options.method = 'POST';
-          options.body = JSON.stringify(params.data);
+          data = params.data;
         }
+        options.body = JSON.stringify(data);
         break;
       default:
         throw new Error("Unsupported fetch action type " + type);
