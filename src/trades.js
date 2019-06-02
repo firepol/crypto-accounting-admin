@@ -1,5 +1,6 @@
 import React, { Fragment }  from 'react';
 import AssociateTradesButton from './AssociateTradesButton';
+import SealTradesButton from './SealTradesButton';
 import {
   List, Datagrid,
   TextField,
@@ -23,6 +24,7 @@ const PostBulkActionButtons = props => (
   <Fragment>
     {/* Add the default bulk delete action */}
     <AssociateTradesButton {...props} />
+    <SealTradesButton {...props} />
   </Fragment>
 );
 
