@@ -1,6 +1,7 @@
 import React, { Fragment }  from 'react';
 import AssociateTradesButton from './AssociateTradesButton';
 import SealTradesButton from './SealTradesButton';
+import SyncTradesButton from './SyncTradesButton';
 import {
   List, Datagrid,
   TextField,
@@ -17,15 +18,61 @@ import {
   Filter,
   TextInput,
   ReferenceInput,
-  SelectInput
+  SelectInput,
+  CardActions,
+  CreateButton,
+  RefreshButton,
+  ExportButton
 } from 'react-admin';
 
-const PostBulkActionButtons = props => (
+const TradeBulkActionButtons = props => (
   <Fragment>
     {/* Add the default bulk delete action */}
     <AssociateTradesButton {...props} />
     <SealTradesButton {...props} />
   </Fragment>
+);
+
+const TradeActions = ({
+                       bulkActions,
+                       basePath,
+                       currentSort,
+                       displayedFilters,
+                       exporter,
+                       filters,
+                       filterValues,
+                       onUnselectItems,
+                       resource,
+                       selectedIds,
+                       showFilter,
+                       total
+                     }) => (
+  <CardActions>
+    {bulkActions && React.cloneElement(bulkActions, {
+      basePath,
+      filterValues,
+      resource,
+      selectedIds,
+      onUnselectItems,
+    })}
+    {filters && React.cloneElement(filters, {
+      resource,
+      showFilter,
+      displayedFilters,
+      filterValues,
+      context: 'button',
+    }) }
+    <CreateButton basePath={basePath} />
+    <ExportButton
+      disabled={total === 0}
+      resource={resource}
+      sort={currentSort}
+      filter={filterValues}
+      exporter={exporter}
+    />
+    <RefreshButton />
+    <SyncTradesButton />
+  </CardActions>
 );
 
 const TradeFilter = (props) => (
@@ -44,7 +91,8 @@ const TradeFilter = (props) => (
 );
 
 export const TradeList = props => (
-  <List filters={<TradeFilter/>} {...props} bulkActionButtons={<PostBulkActionButtons />} perPage={100}>
+  <List filters={<TradeFilter/>} {...props} bulkActionButtons={<TradeBulkActionButtons />} actions={<TradeActions/>}
+        perPage={100}>
     <Datagrid rowClick="edit">
       <TextField source="id"/>
       <DateField source="datetime" showTime/>
