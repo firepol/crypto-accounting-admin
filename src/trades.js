@@ -92,7 +92,7 @@ const TradeFilter = (props) => (
 
 export const TradeList = props => (
   <List filters={<TradeFilter/>} {...props} bulkActionButtons={<TradeBulkActionButtons />} actions={<TradeActions/>}
-        perPage={100}>
+        perPage={100} sort={{ field: 'datetime', order: 'DESC' }}>
     <Datagrid rowClick="edit">
       <TextField source="id"/>
       <DateField source="datetime" showTime/>
