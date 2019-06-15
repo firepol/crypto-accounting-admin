@@ -39,7 +39,7 @@ export default (function (apiUrl, httpClient) {
         url = apiUrl + "/" + resource;
         options.method = 'POST';
         var data = [];
-        if (type === 'trades/associate') {
+        if (type === 'trades/associate' || type === 'trades/deassociate') {
           const { data: { selectedIds } } = params;
           data = selectedIds;
         } else {

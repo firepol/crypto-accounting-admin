@@ -1,5 +1,6 @@
 import React, { Fragment }  from 'react';
 import AssociateTradesButton from './AssociateTradesButton';
+import DeassociateTradesButton from './DeassociateTradesButton';
 import SealTradesButton from './SealTradesButton';
 import SyncTradesButton from './SyncTradesButton';
 import {
@@ -29,6 +30,7 @@ const TradeBulkActionButtons = props => (
   <Fragment>
     {/* Add the default bulk delete action */}
     <AssociateTradesButton {...props} />
+    <DeassociateTradesButton {...props} />
     <SealTradesButton {...props} />
   </Fragment>
 );
