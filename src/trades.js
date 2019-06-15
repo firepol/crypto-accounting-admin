@@ -92,6 +92,14 @@ const TradeFilter = (props) => (
   </Filter>
 );
 
+const BooleanShowTrueOnlyField = ({ record, ...props }) => {
+  console.log(record);
+  console.log(props);
+  return record && record[props.source]
+    ? <BooleanField source={props.source} record={record} {...props} />
+    : null;
+}
+
 export const TradeList = props => (
   <List filters={<TradeFilter/>} {...props} bulkActionButtons={<TradeBulkActionButtons />} actions={<TradeActions/>}
         perPage={100} sort={{ field: 'datetime', order: 'DESC' }}>
@@ -107,9 +115,9 @@ export const TradeList = props => (
       <NumberField source="cost" options={{ maximumFractionDigits: 8 }}/>
       <NumberField source="detected_trade_type"/>
       <NumberField source="trade_type"/>
-      <BooleanField source="sealed"/>
+      <BooleanShowTrueOnlyField source="sealed"/>
       <TextField source="comment"/>
-      <BooleanField source="todo"/>
+      <BooleanShowTrueOnlyField source="todo"/>
       <ReferenceField source="account_id" reference="accounts">
         <TextField source="name"/>
       </ReferenceField>
