@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, crudUpdateMany } from 'react-admin';
 import { showNotification, CREATE } from 'react-admin';
-import dataProvider from './dataProvider';
+import dataProvider from '../dataProvider/dataProvider';
 
 class SealTradesButton extends Component {
   handleClick = () => {

@@ -1,9 +1,9 @@
 import React from 'react';
 import {Admin, Resource} from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
-import {AccountCreate, AccountEdit, AccountList} from './accounts';
-import {TransactionList} from './transactions';
-import {TradeEdit, TradeList} from './trades';
+import {AccountCreate, AccountEdit, AccountList} from './accounts/accounts';
+import {TransactionList} from './transactions/transactions';
+import {TradeEdit, TradeList} from './trades/trades';
 
 const dataProvider = jsonServerProvider('http://127.0.0.1:5000/api');
 const App = () => (
