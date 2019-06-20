@@ -93,8 +93,6 @@ const TradeFilter = (props) => (
 );
 
 const BooleanShowTrueOnlyField = ({ record, ...props }) => {
-  console.log(record);
-  console.log(props);
   return record && record[props.source]
     ? <BooleanField source={props.source} record={record} {...props} />
     : null;
