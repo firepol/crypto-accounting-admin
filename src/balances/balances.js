@@ -9,8 +9,11 @@ import {
   Filter,
   TextInput,
   ReferenceInput,
-  SelectInput
+  SelectInput,
+  CardActions,
+  RefreshButton
 } from 'react-admin';
+import SyncBalancesButton from "./SyncBalancesButton";
 
 const BalanceFilter = (props) => (
   <Filter {...props}>
@@ -23,8 +26,42 @@ const BalanceFilter = (props) => (
   </Filter>
 );
 
+const BalanceActions = ({
+                        bulkActions,
+                        basePath,
+                        currentSort,
+                        displayedFilters,
+                        exporter,
+                        filters,
+                        filterValues,
+                        onUnselectItems,
+                        resource,
+                        selectedIds,
+                        showFilter,
+                        total
+                      }) => (
+  <CardActions>
+    {bulkActions && React.cloneElement(bulkActions, {
+      basePath,
+      filterValues,
+      resource,
+      selectedIds,
+      onUnselectItems,
+    })}
+    {filters && React.cloneElement(filters, {
+      resource,
+      showFilter,
+      displayedFilters,
+      filterValues,
+      context: 'button',
+    }) }
+    <RefreshButton />
+    <SyncBalancesButton />
+  </CardActions>
+);
+
 export const BalanceList = props => (
-  <List filters={<BalanceFilter/>} {...props} perPage={-1}>
+  <List filters={<BalanceFilter/>} actions={<BalanceActions/>} {...props} perPage={-1}>
     <Datagrid rowClick="edit">
       <TextField source="id" />
       <DateField source="date" />
