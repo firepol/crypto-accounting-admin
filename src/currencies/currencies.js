@@ -5,6 +5,7 @@ import {
   TextField,
   Filter,
   TextInput,
+  EditButton
 } from 'react-admin';
 
 const CurrencyFilter = (props) => (
@@ -19,6 +20,7 @@ export const CurrencyList = props => (
       <TextField source="name" />
       <TextField source="slug" />
       <TextField source="symbol" />
+      <EditButton/>
     </Datagrid>
   </List>
 );
