@@ -2,6 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 <https://marmelab.com/react-admin/Tutorial.html>
 
+[React Admin - create and edit actions](https://marmelab.com/react-admin/Tutorial.html#adding-creation-and-editing-capabilities)
+
 ## Available Scripts
 
 In the project directory, you can run:
