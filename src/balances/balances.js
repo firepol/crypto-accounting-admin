@@ -14,6 +14,7 @@ import {
   RefreshButton
 } from 'react-admin';
 import SyncBalancesButton from "./SyncBalancesButton";
+import Typography from '@material-ui/core/Typography';
 
 const BalanceFilter = (props) => (
   <Filter {...props}>
@@ -60,8 +61,16 @@ const BalanceActions = ({
   </CardActions>
 );
 
+const Aside = ({ data, ids })  => (
+  <div style={{ width: 200, margin: '1em' }}>
+    <Typography variant="total-value">
+      Value in US$: {ids.map(id => data[id]).reduce((sum, balance) => Number((sum + balance.total_value).toFixed(1)), 0)}
+    </Typography>
+  </div>
+);
+
 export const BalanceList = props => (
-  <List filters={<BalanceFilter/>} actions={<BalanceActions/>} {...props} perPage={-1}>
+  <List aside={<Aside />} filters={<BalanceFilter/>} actions={<BalanceActions/>} {...props} perPage={-1}>
     <Datagrid rowClick="edit">
       <TextField source="id" />
       <DateField source="date" />
