@@ -8,8 +8,6 @@ import {
   Create,
   SimpleForm,
   TextInput,
-  LongTextInput,
-  DisabledInput
 } from 'react-admin';
 
 export const AccountList = props => (
@@ -27,10 +25,10 @@ export const AccountList = props => (
 export const AccountEdit = props => (
   <Edit {...props}>
     <SimpleForm>
-      <DisabledInput source="id"/>
+      <TextInput disabled source="id"/>
       <TextInput source="name"/>
       <TextInput source="type"/>
-      <LongTextInput source="description"/>
+      <TextInput multiline source="description"/>
     </SimpleForm>
   </Edit>
 );
@@ -40,7 +38,7 @@ export const AccountCreate = props => (
     <SimpleForm>
       <TextInput source="name"/>
       <TextInput source="type"/>
-      <LongTextInput source="description"/>
+      <TextInput multiline source="description"/>
     </SimpleForm>
   </Create>
 );

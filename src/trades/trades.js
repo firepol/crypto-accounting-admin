@@ -13,8 +13,6 @@ import {
   EditButton,
   SimpleForm,
   Edit,
-  LongTextInput,
-  DisabledInput,
   BooleanInput,
   Filter,
   TextInput,
@@ -23,7 +21,7 @@ import {
   CardActions,
   CreateButton,
   RefreshButton,
-  ExportButton
+  ExportButton,
 } from 'react-admin';
 
 const TradeBulkActionButtons = props => (
@@ -130,18 +128,18 @@ export const TradeEdit = props => (
       <ReferenceField source="account_id" reference="accounts">
         <TextField source="name"/>
       </ReferenceField>
-      <DisabledInput source="side"/>
-      <DisabledInput source="base"/>
-      <DisabledInput source="quote"/>
-      <DisabledInput source="amount"/>
-      <DisabledInput source="price"/>
-      <DisabledInput source="cost"/>
-      <DisabledInput source="datetime"/>
+      <TextInput disabled source="side"/>
+      <TextInput disabled source="base"/>
+      <TextInput disabled source="quote"/>
+      <TextInput disabled source="amount"/>
+      <TextInput disabled source="price"/>
+      <TextInput disabled source="cost"/>
+      <TextInput disabled source="datetime"/>
       <TextField source="identifier"/>
-      <DisabledInput source="detected_trade_type"/>
+      <TextInput disabled source="detected_trade_type"/>
       <BooleanInput source="sealed"/>
       <NumberField source="trade_type"/>
-      <LongTextInput source="comment"/>
+      <TextInput multiline source="comment"/>
       <BooleanInput source="todo"/>
     </SimpleForm>
   </Edit>
