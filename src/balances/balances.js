@@ -18,7 +18,8 @@ import {
   Create,
   DateInput,
   NumberInput,
-  CreateButton
+  CreateButton,
+  AutocompleteInput,
 } from 'react-admin';
 import SyncBalancesButton from "./SyncBalancesButton";
 import Typography from '@material-ui/core/Typography';
@@ -78,19 +79,13 @@ const Aside = ({ data, ids })  => (
 );
 
 export const BalanceList = props => (
-  <List aside={<Aside />} filters={<BalanceFilter/>} actions={<BalanceActions/>} {...props} perPage={-1}>
+  <List aside={<Aside />} filters={<BalanceFilter/>} actions={<BalanceActions/>} {...props} perPage={500}>
     <Datagrid rowClick="edit">
       <TextField source="id" />
       <DateField source="date" />
       <ReferenceField source="account_id" reference="accounts">
         <TextField source="name"/>
       </ReferenceField>
-      {/*<ReferenceField source="currency_id" reference="currencies">*/}
-      {/*  <TextField source="name"/>*/}
-      {/*</ReferenceField>*/}
-      {/*<ReferenceField source="currency_id" reference="currencies">*/}
-      {/*  <TextField source="symbol"/>*/}
-      {/*</ReferenceField>*/}
       <TextField source="currency.name" label="Currency" />
       <TextField source="currency.symbol" label="Symbol" />
       <NumberField source="used" options={{ maximumFractionDigits: 4 }} />
@@ -126,10 +121,9 @@ export const BalanceCreate = props => (
       <ReferenceInput source="account_id" reference="accounts">
         <SelectInput optionText="name" />
       </ReferenceInput>
-      {/*<ReferenceField source="currency_id" reference="currencies">*/}
-      {/*  <SelectInput optionText="name" />*/}
-      {/*</ReferenceField>*/}
-      <NumberInput source="currency_id" />
+      <ReferenceInput label="Currency" source="currency_id" reference="currencies" perPage={100000}>
+        <AutocompleteInput source="currency_id" />
+      </ReferenceInput>
       <NumberInput source="used" />
       <NumberInput source="free" />
       <NumberInput source="total" />
