@@ -31,7 +31,6 @@ export default (function (apiUrl, httpClient) {
    * @returns {Object} { url, options } The HTTP request parameters
    */
   var convertDataRequestToHTTP = function (type, resource, params) {
-    var _a;
     var url = '';
     var options = {};
     switch (type) {
@@ -60,7 +59,7 @@ export default (function (apiUrl, httpClient) {
    * @returns {Object} Data response
    */
   var convertHTTPResponse = function (response, type, resource, params) {
-    var headers = response.headers, json = response.json;
+    var json = response.json;
     switch (type) {
       case CREATE:
         return { data: __assign({}, params.data, { id: json.id }) };

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Admin, Resource, ListGuesser, EditGuesser} from 'react-admin';
+import {Admin, Resource, EditGuesser} from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 import {AccountCreate, AccountEdit, AccountList} from './accounts/accounts';
 import {BalanceList, BalanceEdit, BalanceCreate} from './balances/balances';

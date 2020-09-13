@@ -11,9 +11,8 @@ import {
   TextInput,
   ReferenceInput,
   SelectInput,
-  CardActions,
+  TopToolbar,
   RefreshButton,
-  EditGuesser,
   SimpleForm,
   Edit,
   Create,
@@ -49,7 +48,7 @@ const BalanceActions = ({
                         showFilter,
                         total
                       }) => (
-  <CardActions>
+  <TopToolbar>
     {bulkActions && React.cloneElement(bulkActions, {
       basePath,
       filterValues,
@@ -67,7 +66,7 @@ const BalanceActions = ({
     <RefreshButton />
     <SyncBalancesButton />
     <CreateButton basePath={basePath} />
-  </CardActions>
+  </TopToolbar>
 );
 
 const Aside = ({ data, ids })  => (
