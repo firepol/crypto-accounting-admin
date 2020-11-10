@@ -3,9 +3,10 @@ import {
   List,
   Datagrid,
   TextField,
+  BooleanInput,
   Filter,
   TextInput,
-  EditButton
+  EditButton, Edit, SimpleForm, ReferenceField, NumberField
 } from 'react-admin';
 
 const CurrencyFilter = (props) => (
@@ -23,4 +24,16 @@ export const CurrencyList = props => (
       <EditButton/>
     </Datagrid>
   </List>
+);
+
+export const CurrencyEdit = props => (
+  <Edit {...props}>
+    <SimpleForm>
+      <TextField source="name" />
+      <TextField source="slug" />
+      <TextField source="symbol" />
+      <BooleanInput source="is_fiat"/>
+      <BooleanInput source="is_used"/>
+    </SimpleForm>
+  </Edit>
 );

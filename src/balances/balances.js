@@ -121,7 +121,7 @@ export const BalanceCreate = props => (
       <ReferenceInput source="account_id" reference="accounts">
         <SelectInput optionText="name" />
       </ReferenceInput>
-      <ReferenceInput label="Currency" source="currency_id" reference="currencies" perPage={100000}>
+      <ReferenceInput label="Currency" source="currency_id" reference="currencies" perPage={999}>
         <AutocompleteInput source="currency_id" />
       </ReferenceInput>
       <NumberInput source="used" />
