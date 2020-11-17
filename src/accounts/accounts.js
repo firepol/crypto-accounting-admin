@@ -11,7 +11,7 @@ import {
 } from 'react-admin';
 
 export const AccountList = props => (
-  <List {...props} perPage={50}>
+  <List {...props} perPage={50} sort={{ field: 'name', order: 'ASC' }}>
     <Datagrid rowClick="edit">
       <TextField source="id"/>
       <TextField source="type"/>
