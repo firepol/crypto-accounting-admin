@@ -27,7 +27,7 @@ import Typography from '@material-ui/core/Typography';
 const BalanceFilter = (props) => (
   <Filter {...props}>
     {/*<TextInput label="Search" source="q" alwaysOn />*/}
-    <TextInput label="Currency" source="currency" />
+    <TextInput label="Currency" source="currency" perPage={999} />
     <TextInput label="Account IDs" source="account_ids" />
     <ReferenceInput label="Account" source="account_id" reference="accounts" allowEmpty>
       <SelectInput optionText="name" />
@@ -75,6 +75,9 @@ const Aside = ({ data, ids })  => (
     <Typography variant="body1">
       Value in US$: {ids.map(id => data[id]).reduce((sum, balance) => Number((sum + balance.total_value).toFixed(1)), 0)}
     </Typography>
+    <Typography variant="body1">
+      Coins hodled: {ids.map(id => data[id]).reduce((sum, balance) => Number((sum + balance.total).toFixed(1)), 0)}
+    </Typography>
   </div>
 );
 
@@ -118,8 +121,8 @@ export const BalanceEdit = props => (
 export const BalanceCreate = props => (
   <Create {...props}>
     <SimpleForm>
-      <ReferenceInput source="account_id" reference="accounts">
-        <SelectInput optionText="name" />
+      <ReferenceInput source="account_id" reference="accounts" sort={{ field: 'name', order: 'ASC' }}>
+        <AutocompleteInput source="name" />
       </ReferenceInput>
       <ReferenceInput label="Currency" source="currency_id" reference="currencies" perPage={999}>
         <AutocompleteInput source="currency_id" />
