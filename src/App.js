@@ -7,9 +7,13 @@ import {TransactionList} from './transactions/transactions';
 import {TradeEdit, TradeList} from './trades/trades';
 import {CurrencyEdit, CurrencyList} from './currencies/currencies';
 
-const dataProvider = jsonServerProvider('http://127.0.0.1:5000/api');
+import customRoutes from './customRoutes';
+
+let baseUrl = 'http://127.0.0.1:5000/api';
+
+const dataProvider = jsonServerProvider(baseUrl);
 const App = () => (
-  <Admin title="Crypto Accounting" dataProvider={dataProvider}>
+  <Admin title="Crypto Accounting" dataProvider={dataProvider} customRoutes={customRoutes}>
     <Resource name="accounts" list={AccountList} edit={AccountEdit} create={AccountCreate}/>
     <Resource name="balances" list={BalanceList} edit={BalanceEdit} create={BalanceCreate}/>
     <Resource name="trades" list={TradeList} edit={TradeEdit}/>
