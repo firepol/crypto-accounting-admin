@@ -9,7 +9,7 @@ import {
   Filter,
   TextInput,
   ReferenceInput,
-  SelectInput
+  AutocompleteInput,
 } from 'react-admin';
 
 const TransactionFilter = (props) => (
@@ -20,8 +20,8 @@ const TransactionFilter = (props) => (
     <TextInput label="To" source="to_datetime"/>
     <TextInput label="Trade types" source="trade_types"/>
     <TextInput label="Account IDs" source="account_ids"/>
-    <ReferenceInput label="Account" source="account_id" reference="accounts" allowEmpty>
-      <SelectInput optionText="name"/>
+    <ReferenceInput source="account_id" reference="accounts" sort={{ field: 'name', order: 'ASC' }} perPage={999}>
+      <AutocompleteInput source="name" />
     </ReferenceInput>
   </Filter>
 );

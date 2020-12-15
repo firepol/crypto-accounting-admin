@@ -17,11 +17,10 @@ import {
   Filter,
   TextInput,
   ReferenceInput,
-  SelectInput,
   CardActions,
   CreateButton,
   RefreshButton,
-  ExportButton,
+  ExportButton, AutocompleteInput,
 } from 'react-admin';
 
 const TradeBulkActionButtons = props => (
@@ -84,8 +83,8 @@ const TradeFilter = (props) => (
     <TextInput label="To" source="to_datetime" />
     <TextInput label="Trade types" source="trade_types" />
     <TextInput label="Account IDs" source="account_ids" />
-    <ReferenceInput label="Account" source="account_id" reference="accounts" allowEmpty>
-      <SelectInput optionText="name" />
+    <ReferenceInput source="account_id" reference="accounts" sort={{ field: 'name', order: 'ASC' }} perPage={999}>
+      <AutocompleteInput source="name" />
     </ReferenceInput>
   </Filter>
 );
@@ -99,7 +98,7 @@ const BooleanShowTrueOnlyField = ({ record, ...props }) => {
 export const TradeList = props => (
   <List filters={<TradeFilter/>} {...props} bulkActionButtons={<TradeBulkActionButtons />} actions={<TradeActions/>}
         perPage={100} sort={{ field: 'datetime', order: 'DESC' }}>
-    <Datagrid rowClick="edit">
+      <Datagrid rowClick="edit">
       <TextField source="id"/>
       <DateField source="datetime" showTime/>
       <TextField source="identifier"/>
@@ -125,9 +124,9 @@ export const TradeList = props => (
 export const TradeEdit = props => (
   <Edit {...props}>
     <SimpleForm>
-      <ReferenceField source="account_id" reference="accounts">
-        <TextField source="name"/>
-      </ReferenceField>
+      <ReferenceInput source="account_id" reference="accounts" sort={{ field: 'name', order: 'ASC' }} perPage={999}>
+        <AutocompleteInput source="name" />
+      </ReferenceInput>
       <TextInput disabled source="side"/>
       <TextInput disabled source="base"/>
       <TextInput disabled source="quote"/>

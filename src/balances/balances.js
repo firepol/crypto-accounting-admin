@@ -10,7 +10,6 @@ import {
   Filter,
   TextInput,
   ReferenceInput,
-  SelectInput,
   TopToolbar,
   RefreshButton,
   SimpleForm,
@@ -105,12 +104,12 @@ export const BalanceEdit = props => (
     <SimpleForm>
       <TextInput source="id" />
       <DateInput source="date" />
-      <ReferenceInput source="account_id" reference="accounts">
-        <SelectInput optionText="name" />
+      <ReferenceInput source="account_id" reference="accounts" sort={{ field: 'name', order: 'ASC' }} perPage={999}>
+        <AutocompleteInput source="name" />
       </ReferenceInput>
-      <ReferenceField source="currency_id" reference="currencies">
-        <SelectInput optionText="name" />
-      </ReferenceField>
+      <ReferenceInput label="Currency" source="currency_id" reference="currencies" perPage={999}>
+        <AutocompleteInput source="currency_id" />
+      </ReferenceInput>
       <NumberInput source="used" />
       <NumberInput source="free" />
       <NumberInput source="total" />
